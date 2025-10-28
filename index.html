@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&S Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.jpeg" alt="Ministry Logo" class="logo">
+            <div class="header-text">
+                <h1>Travel & Subsistence Calculator</h1>
+                <p class="ministry-name">Ministry of Finance, Economic Development and Investment Promotion</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Trip Details</h2>
+            
+            <div class="form-group">
+                <label for="grade">Official Grade:</label>
+                <select id="grade">
+                    <option value="">Select Grade</option>
+                    <option value="minister">Ministers and Deputy Ministers</option>
+                    <option value="accounting">Accounting Officers</option>
+                    <option value="accounting_non">Accounting Officers (Non-Accounting)</option>
+                    <option value="chief_director">Chief Directors</option>
+                    <option value="director">Directors</option>
+                    <option value="deputy_director">Deputy Directors</option>
+                    <option value="officer">Officers</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="purpose">Purpose of Journey:</label>
+                <textarea id="purpose" rows="3" placeholder="Enter the purpose of the journey..."></textarea>
+            </div>
+
+            <h3 style="margin-top: 30px;">Outbound Journey</h3>
+
+            <div id="routesContainer">
+                <div class="route-section" data-route-id="0">
+                    <h3 class="route-title">Route 1</h3>
+                    
+                    <div class="form-group">
+                        <label for="departure-0">Departure Country:</label>
+                        <select id="departure-0" class="departure-select">
+                            <option value="">Select Country</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination-0">Destination Country:</label>
+                        <select id="destination-0" class="destination-select">
+                            <option value="">Select Country</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="perDiem-0">Per Diem Rate for Destination Country (US$):</label>
+                        <input type="number" id="perDiem-0" class="per-diem-display" placeholder="0" step="0.01" min="0" readonly>
+                        <small>DSA will be calculated based on this rate</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departureDate-0">Departure Date & Time:</label>
+                        <input type="datetime-local" id="departureDate-0" class="departure-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arrivalDate-0">Arrival Date & Time:</label>
+                        <input type="datetime-local" id="arrivalDate-0" class="arrival-date">
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn-add-route" onclick="addRoute()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Another Route
+            </button>
+
+            <h3 style="margin-top: 30px;">Return Journey</h3>
+
+            <div id="returnRoutesContainer">
+                <div class="route-section" data-return-route-id="0">
+                    <h3 class="route-title">Return Route 1</h3>
+                    
+                    <div class="form-group">
+                        <label for="returnDeparture-0">Return Departure Country:</label>
+                        <select id="returnDeparture-0" class="return-departure-select">
+                            <option value="">Select Country</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnDestination-0">Return Destination Country:</label>
+                        <select id="returnDestination-0" class="return-destination-select">
+                            <option value="">Select Country</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnPerDiem-0">Per Diem Rate for Destination Country (US$):</label>
+                        <input type="number" id="returnPerDiem-0" class="return-per-diem-display" placeholder="0" step="0.01" min="0" readonly>
+                        <small>DSA will be calculated based on this rate</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnDepartureDate-0">Return Departure Date & Time:</label>
+                        <input type="datetime-local" id="returnDepartureDate-0" class="return-departure-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnArrivalDate-0">Return Arrival Date & Time:</label>
+                        <input type="datetime-local" id="returnArrivalDate-0" class="return-arrival-date">
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn-add-route" onclick="addReturnRoute()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Another Return Route
+            </button>
+
+            <div class="form-group">
+                <label for="fundingSource">Funding Source:</label>
+                <select id="fundingSource">
+                    <option value="government">Government of Zimbabwe</option>
+                    <option value="external">External Entity (Non-Government)</option>
+                </select>
+            </div>
+
+            <div id="supplementaryNote" class="info-box" style="display: none;">
+                <strong>Note:</strong> US$50 supplementary allowance applies per day (max 30 days) plus representation allowances for Deputy Director and above.
+            </div>
+
+            <div class="button-group">
+                <button onclick="calculate()" class="btn-calculate">Calculate</button>
+                <button onclick="resetForm()" class="btn-reset">Reset</button>
+            </div>
+        </div>
+
+        <div id="results" class="card results" style="display: none;">
+            <h2>Results</h2>
+            
+            <div class="result-item purpose-display">
+                <span class="label">Purpose of Journey:</span>
+                <span class="value" id="purposeDisplay"></span>
+            </div>
+            
+            <div class="result-item">
+                <span class="label">Total Duration:</span>
+                <span class="value" id="totalDuration"></span>
+            </div>
+
+            <div class="result-item">
+                <span class="label">Travel Time (Outbound):</span>
+                <span class="value" id="outboundTravel"></span>
+            </div>
+
+            <div class="result-item">
+                <span class="label">Travel Time (Return):</span>
+                <span class="value" id="returnTravel"></span>
+            </div>
+
+            <div class="result-item">
+                <span class="label">Full Days at Destination:</span>
+                <span class="value" id="fullDays"></span>
+            </div>
+
+            <h3>DSA Breakdown</h3>
+            <div class="breakdown">
+                <div class="result-item">
+                    <span class="label">Accommodation (50%):</span>
+                    <span class="value" id="accommodation"></span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Lunch (15%):</span>
+                    <span class="value" id="lunch"></span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Dinner (15%):</span>
+                    <span class="value" id="dinner"></span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Breakfast (10%):</span>
+                    <span class="value" id="breakfast"></span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Other Expenses (10%):</span>
+                    <span class="value" id="otherExpenses"></span>
+                </div>
+            </div>
+
+            <div class="result-item highlight">
+                <span class="label">Daily Allowance (Grade Multiplier):</span>
+                <span class="value" id="dailyAllowance"></span>
+            </div>
+
+            <div class="result-item highlight">
+                <span class="label">Total for Full Days:</span>
+                <span class="value" id="fullDaysTotal"></span>
+            </div>
+
+            
+
+            <h3>Day-by-Day Allowance Details</h3>
+            <div id="dailyTotalsList" style="margin-bottom: 10px;"></div>
+            <div id="dayByDayBreakdown" class="day-breakdown"></div>
+
+            
+
+            <div id="supplementarySection" style="display: none;">
+                <div class="result-item highlight">
+                    <span class="label">Supplementary Allowance (US$50/day):</span>
+                    <span class="value" id="supplementaryAllowance"></span>
+                </div>
+            </div>
+
+            <div class="result-item total">
+                <span class="label">Total T&S Payment:</span>
+                <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <input type="number" id="totalPayment" class="editable-total" step="0.01" min="0" style="font-size: 1.2em; font-weight: bold; padding: 8px; border: 2px solid #007bff; border-radius: 4px; background-color: #f8f9fa; cursor: text; width: 150px;">
+                    <span style="font-size: 1.2em; font-weight: bold;">USD</span>
+                </div>
+                <small style="display: block; color: #666; margin-top: 5px;">💡 You can edit this amount before printing</small>
+            </div>
+
+            <button onclick="printToPDF()" class="btn-print">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                Print as PDF
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    gap: 25px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.header-text {
+    flex: 1;
+}
+
+h1 {
+    text-align: left;
+    color: #003366;
+    margin-bottom: 8px;
+    font-size: 2.2em;
+    text-shadow: none;
+}
+
+.ministry-name {
+    color: #003366;
+    font-size: 0.95em;
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #003366;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 3px solid #003366;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-with-button {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.input-with-button input {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+
+input[type="datetime-local"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+input[type="datetime-local"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #003366;
+}
+
+input[type="number"]:read-only {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.85em;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-calculate {
+    flex: 2;
+    padding: 15px;
+    background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-calculate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.5);
+}
+
+.btn-calculate:active {
+    transform: translateY(0);
+}
+
+.btn-reset {
+    flex: 1;
+    padding: 15px;
+    background: white;
+    color: #003366;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-reset:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-reset:active {
+    transform: translateY(0);
+}
+
+.btn-increment {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: white;
+    color: #003366;
+    border: 2px solid #003366;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.btn-increment:hover {
+    background: #003366;
+    color: white;
+    transform: scale(1.1);
+}
+
+.btn-increment:active {
+    transform: scale(0.95);
+}
+
+.btn-add-route {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #003366;
+    border: 2px dashed #003366;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-add-route:hover {
+    background: #e6f2ff;
+    border-style: solid;
+    transform: translateY(-2px);
+}
+
+.btn-add-route:active {
+    transform: translateY(0);
+}
+
+.route-section {
+    position: relative;
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #003366;
+}
+
+.route-section:first-child {
+    background: transparent;
+    padding: 0;
+    border-left: none;
+}
+
+.route-title {
+    color: #003366;
+    font-size: 1.2em;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #003366;
+}
+
+.route-section:first-child .route-title {
+    display: none;
+}
+
+.btn-remove-route {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: white;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.btn-remove-route:hover {
+    background: #dc3545;
+    color: white;
+    transform: rotate(90deg);
+}
+
+.btn-print {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    color: #003366;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-print:hover {
+    background: #003366;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.3);
+}
+
+.btn-print:active {
+    transform: translateY(0);
+}
+
+.results {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.result-item.purpose-display {
+    flex-direction: column;
+    background: #e6f2ff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.result-item.purpose-display .value {
+    margin-top: 8px;
+    font-style: italic;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item .label {
+    color: #555;
+    font-weight: 500;
+}
+
+.result-item .value {
+    color: #333;
+    font-weight: 600;
+}
+
+.result-item.highlight {
+    background: #e6f2ff;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.result-item.total {
+    background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+    color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.result-item.total .label,
+.result-item.total .value {
+    color: white;
+}
+
+h3 {
+    color: #003366;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.breakdown {
+    background: #e6f2ff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.breakdown .result-item {
+    padding: 10px;
+    border-bottom: 1px solid #e8e9f5;
+}
+
+.breakdown .result-item:last-child {
+    border-bottom: none;
+}
+
+.info-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #856404;
+}
+
+.info-box strong {
+    color: #533f03;
+}
+
+/* Country Breakdown Styles */
+.country-breakdown {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.country-section {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #003366;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.country-section.zimbabwe-departure {
+    border-left-color: #28a745;
+    background: #f8fff9;
+}
+
+.country-section.zimbabwe-departure .country-header {
+    color: #28a745;
+}
+
+.country-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.country-total {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.country-meals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #e6f2ff;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.meal-item.eligible {
+    background: #d4edda;
+    color: #155724;
+}
+
+.meal-item.not-eligible {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.meal-label {
+    font-weight: 500;
+}
+
+.meal-value {
+    font-weight: 600;
+}
+
+.country-explanation {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 8px;
+    padding: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.zimbabwe-note {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.zimbabwe-note strong {
+    color: #0c5460;
+}
+
+.day-breakdown {
+    background: #f8f9ff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+#dailyTotalsList {
+    font-size: 0.95em;
+    color: #333;
+    background: #fff;
+    border: 1px solid #e2e6ea;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+#dailyTotalsList .totals-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dashed #e9ecef;
+}
+#dailyTotalsList .totals-row:last-child {
+    border-bottom: none;
+}
+
+.day-item {
+    background: white;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-left: 4px solid #003366;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.day-item:last-child {
+    margin-bottom: 0;
+}
+
+.day-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e6f2ff;
+}
+
+.day-number {
+    font-weight: 700;
+    color: #003366;
+    font-size: 1.1em;
+}
+
+.day-date {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.day-location {
+    color: #003366;
+    font-weight: 600;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    background: #e6f2ff;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.day-allowances {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.allowance-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: #f8f9ff;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.allowance-item.eligible {
+    background: #d4edda;
+    border-left: 3px solid #28a745;
+}
+
+.allowance-item.not-eligible {
+    background: #f8d7da;
+    border-left: 3px solid #dc3545;
+    opacity: 0.6;
+}
+
+.allowance-label {
+    color: #555;
+    font-weight: 500;
+}
+
+.allowance-value {
+    color: #333;
+    font-weight: 600;
+}
+
+.day-total {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid #e6f2ff;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    color: #003366;
+}
+
+.rate-note {
+    margin-top: 6px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.earned-breakdown {
+    background: #e8f5e8;
+    border: 1px solid #28a745;
+    color: #155724;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.earned-breakdown strong {
+    color: #0c5460;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .btn-calculate,
+    .btn-print,
+    .btn-add-route,
+    .btn-remove-route,
+    .btn-increment,
+    .card:first-of-type {
+        display: none;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .header {
+        box-shadow: none;
+        border: 2px solid #003366;
+    }
+}
+
+/* Large Desktop (1920px and above) */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    h1 {
+        font-size: 2.5em;
+    }
+    
+    h2 {
+        font-size: 2em;
+    }
+}
+
+/* Desktop (1200px - 1919px) */
+@media (min-width: 1200px) and (max-width: 1919px) {
+    .container {
+        max-width: 1000px;
+    }
+}
+
+/* Laptop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        max-width: 900px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .header {
+        padding: 18px 25px;
+        gap: 20px;
+    }
+    
+    h1 {
+        font-size: 1.9em;
+    }
+    
+    .logo {
+        width: 85px;
+        height: 85px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    .route-section {
+        padding: 18px;
+    }
+}
+
+/* Mobile Landscape & Small Tablet (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    body {
+        padding: 15px;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px 20px;
+        gap: 15px;
+    }
+    
+    .header-text {
+        width: 100%;
+    }
+    
+    h1 {
+        text-align: center;
+        font-size: 1.7em;
+    }
+    
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .ministry-name {
+        font-size: 0.9em;
+    }
+    
+    .card {
+        padding: 22px;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .route-section {
+        padding: 15px;
+    }
+    
+    .btn-increment {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Mobile Portrait (320px - 575px) */
+@media (max-width: 575px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .header-text {
+        width: 100%;
+    }
+    
+    h1 {
+        text-align: center;
+        font-size: 1.4em;
+        margin-bottom: 5px;
+    }
+    
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .ministry-name {
+        font-size: 0.8em;
+    }
+    
+    .card {
+        padding: 18px;
+        border-radius: 12px;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    h3 {
+        font-size: 1.1em;
+    }
+    
+    .route-title {
+        font-size: 1.1em;
+    }
+    
+    .route-section {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    label {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+    
+    input[type="datetime-local"],
+    input[type="number"],
+    select,
+    textarea {
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    textarea {
+        min-height: 70px;
+    }
+    
+    small {
+        font-size: 0.8em;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn-calculate,
+    .btn-reset {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    .btn-add-route {
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    .btn-increment {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .btn-increment svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .btn-remove-route {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+        top: 8px;
+        right: 8px;
+    }
+    
+    .btn-print {
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    .result-item {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .result-item .label,
+    .result-item .value {
+        font-size: 14px;
+    }
+    
+    .result-item.total {
+        font-size: 1.1em;
+    }
+    
+    .breakdown {
+        padding: 8px;
+    }
+    
+    .breakdown .result-item {
+        padding: 8px;
+    }
+    
+    .day-breakdown {
+        padding: 12px;
+        max-height: 500px;
+    }
+    
+    .day-item {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    
+    .day-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .day-allowances {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+    
+    .allowance-item {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+}
+
+/* Extra Small Mobile (max 374px) */
+@media (max-width: 374px) {
+    body {
+        padding: 8px;
+    }
+    
+    h1 {
+        font-size: 1.2em;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .ministry-name {
+        font-size: 0.75em;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    input[type="datetime-local"],
+    input[type="number"],
+    select,
+    textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .btn-calculate,
+    .btn-reset {
+        padding: 10px;
+        font-size: 15px;
+    }
+    
+    .btn-increment {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .input-with-button {
+        gap: 6px;
+    }
+}
+
+/* Editable Total Payment Styling */
+.editable-total {
+    transition: all 0.3s ease;
+}
+
+.editable-total:hover {
+    border-color: #0056b3 !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.editable-total:focus {
+    outline: none;
+    border-color: #0056b3 !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Print-specific styles */
+@media print {
+    .editable-total {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 2px !important;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+    }
+    
+    .editable-total::-webkit-inner-spin-button,
+    .editable-total::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    small {
+        display: none !important;
+    }
+}
